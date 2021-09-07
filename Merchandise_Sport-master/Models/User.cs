@@ -8,9 +8,9 @@ namespace Merchandise_Sport_master.Models
 {
     public enum UserType
     {
-        
         Client,
-        Admin
+        Admin,
+        Editor
     }
     public class User
     {
@@ -23,7 +23,6 @@ namespace Merchandise_Sport_master.Models
         [Required]
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 4, ErrorMessage = "Password need to be more then 4 letter")]
-        [RegularExpression("^[A-Z]+[0-9a-zA-Z]*$", ErrorMessage = "Password must start with Upper case,can contin lower case and numbers ,Exclude spaces and &@#א")]
         public string Password { get; set; }
 
         [DataType(DataType.EmailAddress)]
@@ -36,6 +35,11 @@ namespace Merchandise_Sport_master.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public DateTime BirthDay { get; set; }
+
+        public String FavoriteTeam { get; set; }
+
         public UserType Type { get; set; } = UserType.Client;
 
     }

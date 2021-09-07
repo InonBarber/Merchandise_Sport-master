@@ -2,12 +2,10 @@
 
 @{
     ViewData["Title"] = "Register";
-    Layout = "_LoginLayout";
+    Layout = "_LayoutLogin";
 }
 
 <h1>Register a new user</h1>
-
-
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -44,17 +42,29 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="BirthDay" class="control-label"></label>
+                <input asp-for="BirthDay" class="form-control" />
+                <span asp-validation-for="BirthDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavoriteTeam" class="control-label"></label>
+                <input asp-for="FavoriteTeam" class="form-control" />
+                <span asp-validation-for="FavoriteTeam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Register" class="btn btn-primary" />
             </div>
         </form>
         @if (ViewBag.Error != null)
-        {<div class="text-danger">@ViewBag.Error </div>}
-
+        {
+            <div class="text-danger">@ViewBag.Error</div>
+        }
+        
     </div>
 </div>
 
 <div>
-   Already registred?  <a asp-action="Login">Click here </a>to login
+   Already registerd? <a asp-action="Login">Click here</a> to login
 </div>
 
 @section Scripts {

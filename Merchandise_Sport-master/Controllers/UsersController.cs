@@ -35,7 +35,7 @@ namespace Merchandise_Sport_master.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("Id,Username,Password,Email,Address,FirstName,LastName")] User user)
+        public async Task<IActionResult> Register([Bind("Id,Username,Password,Email,Address,FirstName,LastName,BirthDay,FavoriteTeam")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -45,7 +45,7 @@ namespace Merchandise_Sport_master.Controllers
                     _context.Add(user);
                     await _context.SaveChangesAsync();
 
-                    var u = _context.User.FirstOrDefault(u => u.Username == user.Username && u.Password == u.Password);
+                    var u = _context.User.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
 
                     Signin(u);
 
@@ -99,11 +99,11 @@ namespace Merchandise_Sport_master.Controllers
 
         private async void Signin(User account)
         {
-            var claims = new List<Claim> 
-            { 
-                new Claim(ClaimTypes.Name, account.Username), 
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, account.Username),
                 new Claim(ClaimTypes.Role, account.Type.ToString()), };
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); 
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
             {
                 //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10)
@@ -111,9 +111,9 @@ namespace Merchandise_Sport_master.Controllers
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
-                authProperties); 
+                authProperties);
         }
-    
+
 
         public async Task<IActionResult> Logout()
         {
@@ -131,7 +131,6 @@ namespace Merchandise_Sport_master.Controllers
         {
             return View(await _context.User.ToListAsync());
         }
-
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -139,19 +138,14 @@ namespace Merchandise_Sport_master.Controllers
             {
                 return NotFound();
             }
-
             var user = await _context.User
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
-
             return View(user);
         }
-
-
-
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -159,7 +153,6 @@ namespace Merchandise_Sport_master.Controllers
             {
                 return NotFound();
             }
-
             var user = await _context.User.FindAsync(id);
             if (user == null)
             {
@@ -167,7 +160,6 @@ namespace Merchandise_Sport_master.Controllers
             }
             return View(user);
         }
-
         // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -179,7 +171,6 @@ namespace Merchandise_Sport_master.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -202,7 +193,6 @@ namespace Merchandise_Sport_master.Controllers
             }
             return View(user);
         }
-
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -210,17 +200,14 @@ namespace Merchandise_Sport_master.Controllers
             {
                 return NotFound();
             }
-
             var user = await _context.User
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
-
             return View(user);
         }
-
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -231,7 +218,6 @@ namespace Merchandise_Sport_master.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool UserExists(int id)
         {
             return _context.User.Any(e => e.Id == id);
