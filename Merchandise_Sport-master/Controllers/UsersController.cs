@@ -67,34 +67,66 @@ namespace Merchandise_Sport_master.Controllers
             return View();
         }
 
-        // POST: Users/Login
+        // POST: Users/ Login
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Login([Bind("Id,Username,Password")] User user)
         {
+
             if (ModelState.IsValid)
             {
-                var q = from u in _context.User
-                        where u.Username == user.Username && u.Password == user.Password
-                        select u;
+                var isUserValid = _context.User.FirstOrDefault(us => us.Username == user.Username && us.Password == user.Password);
 
-                if (q.Count() > 0)
+
+                //if we have this user in the DB
+                if (isUserValid != null)
                 {
-                    //HttpContext.Session.SetString("username", q.First().Username);
-                    Signin(q.First());
+
+                    Signin(isUserValid);
 
                     return RedirectToAction(nameof(Index), "Home");
                 }
                 else
                 {
-                    ViewData["Error"] = "User name and/or password are incorrect.";
+                    //viewdata is like var you can difine and use in the view
+                    ViewData["Error"] = "Username or Password are wrong";
                 }
-
             }
             return View(user);
         }
+
+
+        //// POST: Users/Login
+        //// To protect from overposting attacks, enable the specific properties you want to bind to.
+        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Login([Bind("Id,Username,Password")] User user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var q = from u in _context.User
+        //                where u.Username == user.Username && u.Password == user.Password
+        //                select u;
+
+        //        if (q!=null)
+        //        {
+        //            //HttpContext.Session.SetString("username", q.First().Username);
+        //            Signin(q.First());
+
+        //            return RedirectToAction(nameof(Index), "Home");
+        //        }
+        //        else
+        //        {
+        //            ViewData["Error"] = "User name and/or password are incorrect.";
+        //        }
+
+        //    }
+        //    return View(user);
+        //}
 
 
         private async void Signin(User account)
@@ -125,7 +157,7 @@ namespace Merchandise_Sport_master.Controllers
         {
             return View();
         }
-        /* 
+
         // GET: Users
         public async Task<IActionResult> Index()
         {
@@ -222,6 +254,6 @@ namespace Merchandise_Sport_master.Controllers
         {
             return _context.User.Any(e => e.Id == id);
         }
-        */
+
     }
 }

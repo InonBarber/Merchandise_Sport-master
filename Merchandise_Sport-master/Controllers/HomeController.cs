@@ -19,13 +19,13 @@ namespace Merchandise_Sport_master.Controllers
         {
             _logger = logger;
         }
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
             return View();
         }
         //just admin can get into this page
-        [Authorize ]
+        //[Authorize ]
         public IActionResult Privacy()
         {
             return View();

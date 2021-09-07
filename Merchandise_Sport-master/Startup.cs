@@ -31,7 +31,7 @@ namespace Merchandise_Sport_master
             services.AddDbContext<Merchandise_Sport_masterContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Merchandise_Sport_masterContext")));
 
-            services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(10));
+           services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(10));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             { 
                 options.LoginPath = "/Users/Login"; 
@@ -67,7 +67,7 @@ namespace Merchandise_Sport_master
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Users}/{action=Register}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
