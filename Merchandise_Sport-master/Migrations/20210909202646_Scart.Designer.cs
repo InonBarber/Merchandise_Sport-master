@@ -4,14 +4,16 @@ using Merchandise_Sport_master.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Merchandise_Sport_master.Migrations
 {
     [DbContext(typeof(Merchandise_Sport_masterContext))]
-    partial class Merchandise_Sport_masterContextModelSnapshot : ModelSnapshot
+    [Migration("20210909202646_Scart")]
+    partial class Scart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +53,7 @@ namespace Merchandise_Sport_master.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ShopCartId")
+                    b.Property<int?>("ShoppingCartId")
                         .HasColumnType("int");
 
                     b.Property<int>("Size")
@@ -64,12 +66,12 @@ namespace Merchandise_Sport_master.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("ShopCartId");
+                    b.HasIndex("ShoppingCartId");
 
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Merchandise_Sport_master.Models.ShopCart", b =>
+            modelBuilder.Entity("Merchandise_Sport_master.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +88,7 @@ namespace Merchandise_Sport_master.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ShopCart");
+                    b.ToTable("ShoppingCart");
                 });
 
             modelBuilder.Entity("Merchandise_Sport_master.Models.User", b =>
@@ -141,14 +143,14 @@ namespace Merchandise_Sport_master.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Merchandise_Sport_master.Models.ShopCart", null)
+                    b.HasOne("Merchandise_Sport_master.Models.ShoppingCart", null)
                         .WithMany("Products")
-                        .HasForeignKey("ShopCartId");
+                        .HasForeignKey("ShoppingCartId");
 
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Merchandise_Sport_master.Models.ShopCart", b =>
+            modelBuilder.Entity("Merchandise_Sport_master.Models.ShoppingCart", b =>
                 {
                     b.HasOne("Merchandise_Sport_master.Models.User", "User")
                         .WithMany()
@@ -164,7 +166,7 @@ namespace Merchandise_Sport_master.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Merchandise_Sport_master.Models.ShopCart", b =>
+            modelBuilder.Entity("Merchandise_Sport_master.Models.ShoppingCart", b =>
                 {
                     b.Navigation("Products");
                 });

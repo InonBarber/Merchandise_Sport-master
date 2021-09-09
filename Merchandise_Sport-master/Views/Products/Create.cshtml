@@ -19,7 +19,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="Size" class="control-label"></label>
-                <input asp-for="Size" class="form-control" />
+                <select name="hall" id="hall">
+                    <option>
+                        S
+                    </option>
+                    <option>
+                       M
+                    </option>
+                    <option selected>
+                        L
+                    </option>
+                    <option>
+                       XL
+                    </option>
+                    <option>
+                        XXL
+                    </option>
+                </select>
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
             <div class="form-group">

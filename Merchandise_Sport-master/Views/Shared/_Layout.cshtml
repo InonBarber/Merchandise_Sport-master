@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Merchandise_Sport_master</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Merchandise Sport World ⚽🏀</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Shop Online</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ShopCarts" asp-action="Index">Your Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Our Products</a>
                         </li>
                         @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
                         {
@@ -50,7 +53,7 @@
 
                         <li class="nav-item">
                             <form class="d-flex">
-                                <a class="nav-link text-primary"> Hello @Context.User.Identity.Name @Context.User.IsInRole("Admin") </a>
+                                <a class="nav-link text-primary"> Hello @Context.User.Identity.Name </a>
                             </form>
                         </li>
                     </ul>

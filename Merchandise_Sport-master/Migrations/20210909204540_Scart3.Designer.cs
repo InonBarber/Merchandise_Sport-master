@@ -4,14 +4,16 @@ using Merchandise_Sport_master.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Merchandise_Sport_master.Migrations
 {
     [DbContext(typeof(Merchandise_Sport_masterContext))]
-    partial class Merchandise_Sport_masterContextModelSnapshot : ModelSnapshot
+    [Migration("20210909204540_Scart3")]
+    partial class Scart3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
