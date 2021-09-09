@@ -25,11 +25,6 @@ namespace Merchandise_Sport_master.Controllers
             var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category);
             return View(await merchandise_Sport_masterContext.ToListAsync());
         }
-        public async Task<IActionResult> Search(string query)
-        {
-            var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category).Where(pr=>pr.Title.Contains(query) || query == null);
-            return View("Index",await merchandise_Sport_masterContext.ToListAsync());
-        }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -53,7 +48,7 @@ namespace Merchandise_Sport_master.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, nameof(Product.SerialNumber),nameof(Product.Title));
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             return View();
         }
 

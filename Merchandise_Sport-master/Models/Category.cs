@@ -13,8 +13,6 @@ namespace Merchandise_Sport_master.Models
         public string Name{ get; set; }
 
         public List<Product>Products { get; set; }
-        public CategoryImage categoryImage { get; set; }
-
 
     }
 }

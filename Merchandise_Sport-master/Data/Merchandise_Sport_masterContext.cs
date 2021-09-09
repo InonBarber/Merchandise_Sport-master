@@ -18,8 +18,6 @@ namespace Merchandise_Sport_master.Data
 
         public DbSet<Merchandise_Sport_master.Models.Category> Category { get; set; }
 
-        public DbSet<Merchandise_Sport_master.Models.CategoryImage> CategoryImage { get; set; }
-
         public DbSet<Merchandise_Sport_master.Models.User> User { get; set; }
     }
 }
