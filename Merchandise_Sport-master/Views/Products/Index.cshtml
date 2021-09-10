@@ -4,26 +4,24 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Our Products</h1
+<h1>
+    Our Products
+</h1>
 
->
 @if (Context.User.IsInRole("Admin"))
 {
-    <p>
-        <a asp-action="Create">Create New</a>
-        <a asp-action="Delete">Delete</a>
-        <a asp-action="Edit">Edit</a>
-    </p>
+    <a asp-action="Create">Create</a>
 }
+
+
 
 
 @foreach (var item in Model)
 {
-    <div class="card col-3" style="width: 18rem;">
+    <div class="card" style="width: 18rem;">
         <img src="@item.Image" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">@item.Title</h5>
-            <p class="card-text">Size -  @item.Size</p>
             <p class="card-text">Price - @item.Price $</p>
             @if (Context.User.IsInRole("Admin"))
             {
@@ -32,4 +30,13 @@
             <a asp-controller="ShopCarts" asp-action="Create" class="btn btn-primary">Add To Cart</a>
         </div>
     </div>
+    @if (Context.User.IsInRole("Admin"))
+    {
+        <p>
+            <a asp-action="Edit" asp-route-id="@item.SerialNumber">Edit   </a> |
+            <a asp-action="Details" asp-route-id="@item.SerialNumber">Details   </a> |
+            <a asp-action="Delete" asp-route-id="@item.SerialNumber">Delete   </a>  |
+
+        </p>
+    }
 }
