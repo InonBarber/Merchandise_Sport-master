@@ -20,17 +20,23 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                           
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home 🏛️ </a>
+
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home🏛️ </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ShopCarts" asp-action="Index">Your Cart 🛒</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ShopCarts" asp-action="Index">Your Cart🛒</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Our Products 👕 🧢</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Our Products👕</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Shirt">Our Shirts👕</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Short">Our Shorts🩳</a>
                         </li>
                         @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0)
                         {
