@@ -25,6 +25,16 @@ namespace Merchandise_Sport_master.Controllers
             var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category);
             return View(await merchandise_Sport_masterContext.ToListAsync());
         }
+        public async Task<IActionResult> Shirt()
+        {
+            var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category);
+            return View(await merchandise_Sport_masterContext.ToListAsync());
+        }
+        public async Task<IActionResult> Short()
+        {
+            var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category);
+            return View(await merchandise_Sport_masterContext.ToListAsync());
+        }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
