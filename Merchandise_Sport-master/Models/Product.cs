@@ -10,12 +10,17 @@ namespace Merchandise_Sport_master.Models
     {
         [Key]
         public int SerialNumber { get; set; }
-
+        [Required]
         public string Title { get; set; }
+        [Required]
 
         public int Size { get; set; }
+        [Required]
+        [Range(0, 600)]
+        [DataType(DataType.Currency)]
 
         public int Price { get; set; }
+        [Required]
 
         public string Image { get; set; }
 

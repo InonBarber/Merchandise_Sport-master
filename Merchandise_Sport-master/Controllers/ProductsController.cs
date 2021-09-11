@@ -36,6 +36,27 @@ namespace Merchandise_Sport_master.Controllers
             return View(await merchandise_Sport_masterContext.ToListAsync());
         }
 
+        public async Task<IActionResult> Accessories()
+        {
+            var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category);
+            return View(await merchandise_Sport_masterContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> Search(string query)
+        {
+            var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category).Where(pr => pr.Title.Contains(query)  || pr.Price.ToString().Contains(query) || (query == null));
+            return View("Index", await merchandise_Sport_masterContext.ToListAsync());
+        }
+        public async Task<IActionResult> SearchShirt(string query)
+        {
+            var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category).Where(pr => pr.Title.Contains(query) || pr.Price.ToString().Contains(query) || (query == null));
+            return View("Shirt", await merchandise_Sport_masterContext.ToListAsync());
+        }
+        public async Task<IActionResult> SearchShort(string query)
+        {
+            var merchandise_Sport_masterContext = _context.Product.Include(p => p.Category).Where(pr => pr.Title.Contains(query) || pr.Price.ToString().Contains(query) || (query == null));
+            return View("Short", await merchandise_Sport_masterContext.ToListAsync());
+        }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {

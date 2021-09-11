@@ -18,6 +18,7 @@ namespace Merchandise_Sport_master.Models
 
         [Required]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Username need to be more then one letter")]
+        [Display(Name = "Username")]
         public string Username { get; set; }
 
         [Required]
@@ -31,12 +32,12 @@ namespace Merchandise_Sport_master.Models
 
 
         public string Address { get; set; }
-
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
-
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
-        public DateTime BirthDay { get; set; }
+        
+        [Display(Name = "Favorite Team")]
 
         public String FavoriteTeam { get; set; }
 

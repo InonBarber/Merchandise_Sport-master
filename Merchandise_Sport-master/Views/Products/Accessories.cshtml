@@ -1,20 +1,18 @@
 ﻿@model IEnumerable<Merchandise_Sport_master.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Accessories";
     Layout = "_ProductLayout ";
-
 }
 
 <h1>
-    Our Shorts
+    Our Accessories
 </h1>
 
 @if (Context.User.IsInRole("Admin"))
 {
     <a asp-action="Create">Create</a>
 }
-
 <form asp-action="Search">
     <input name="query" placeholder="Enter product to search" />
     <input type="submit" value="Search" class="btn btn-primary" />
@@ -25,9 +23,10 @@
     <div class="row" id="tab">
 
 
+
         @foreach (var item in Model)
         {
-            @if (item.Category.Name == "Short")
+            @if (item.Category.Name == "Accessories")
             {
                 <div class="card" style="width: 18rem; min-height: 550px;">
 
@@ -51,7 +50,7 @@
                     }
                 </div>
             }
-
         }
+        
     </div>
 </div>

@@ -20,7 +20,7 @@ namespace Merchandise_Sport_master.Data
 
         public DbSet<Merchandise_Sport_master.Models.User> User { get; set; }
 
-        public DbSet<Merchandise_Sport_master.Models.ShopCart> ShopCart { get; set; }
+        
 
         
     }
